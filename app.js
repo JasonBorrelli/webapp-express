@@ -1,0 +1,15 @@
+import express from "express";
+
+const app = express();
+const port = process.env.APP_PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("My project's API home page!");
+});
+
+
+
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
