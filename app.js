@@ -9,6 +9,7 @@ app.get("/", (req, res) => {                                            // defin
 
 app.use("/games", gamesRouter);                                        // utilizzo del router per gestire le richieste alla route /games
 
+app.use(express.json());                                                // middleware per il parsing del corpo delle richieste in formato JSON
 
 app.listen(port, () => {                                                // avvio del server sulla porta specificata
   console.log(`Server is running on port ${port}`);
