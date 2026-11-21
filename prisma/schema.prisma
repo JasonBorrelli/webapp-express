@@ -12,22 +12,22 @@ datasource db {
   provider = "mysql"
 }
 
-model game {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-  price       Float
-  categoryId  Int
-  category    category @relation(fields: [categoryId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Game {
+  id          Int      @id @default(autoincrement())                                  // campo id, chiave primaria, autoincrementale
+  name        String                                                                  // campo name, tipo stringa  
+  description String?                                                                     // campo description, tipo stringa, opzionale
+  price       Float                                                                   // campo price, tipo float
+  categoryId  Int                                                                     //  foreign key categoryId, tipo intero
+  category    Category @relation(fields: [categoryId], references: [id])                 // relazione con la tabella category fields: [categoryId], references: [id]
+  createdAt   DateTime @default(now())                                                    // campo createdAt, tipo DateTime, con valore di default
+  updatedAt   DateTime @updatedAt                                                     // campo updatedAt, tipo DateTime, con aggiornamento automatico
 }
 
-model category {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-  games       game[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Category {
+  id          Int      @id @default(autoincrement())                                  // campo id, chiave primaria, autoincrementale
+  name        String                                                                  // campo name, tipo stringa
+  description String?                                                                     // campo description, tipo stringa, opzionale
+  games       Game[]                                                                      // relazione con la tabella game
+  createdAt   DateTime @default(now())                                                    // campo createdAt, tipo DateTime, con valore di default
+  updatedAt   DateTime @updatedAt                                                     // campo updatedAt, tipo DateTime, con aggiornamento automatico
 }
