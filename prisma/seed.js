@@ -1,8 +1,9 @@
-async function main() {
-    console.log(`Start seeding ...`)
+async function main() {                                    //funzione asincrona che esegue il seeding dei dati nel database
+    console.log(`Start seeding ...`)                                        
 }
-main().catch((e) => {
-    console.log(e);
-    process.exit(1);
+main().catch((e) => {                                       // gestione degli errori durante l'esecuzione della funzione main
 
-}).finally(() => prisma.$disconnect());
+    console.log(e);                                         // stampa l'errore sulla console
+    process.exit(1);                                        // termina il processo con un codice di uscita 1 in caso di errore
+
+}).finally(() => prisma.$disconnect());                     // disconnessione dal database al termine dell'esecuzione della funzione main
