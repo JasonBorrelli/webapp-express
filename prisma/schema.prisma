@@ -25,7 +25,7 @@ model Game {
 
 model Category {
   id          Int      @id @default(autoincrement())                                  // campo id, chiave primaria, autoincrementale
-  name        String                                                                  // campo name, tipo stringa
+  name        String   @unique                                                         // campo name, tipo stringa, univoco
   description String?                                                                     // campo description, tipo stringa, opzionale
   games       Game[]                                                                      // relazione con la tabella game
   createdAt   DateTime @default(now())                                                    // campo createdAt, tipo DateTime, con valore di default
