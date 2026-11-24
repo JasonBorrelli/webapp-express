@@ -1,6 +1,5 @@
 // prisma/seed.js
-import { prisma } from "../libs/prismaClient.js";
-
+import prisma from "../libs/prismaClient.js";
 const categories = [
   { name: "RPG", description: "Giochi di ruolo con progressione del personaggio" },
   { name: "Azione-Avventura", description: "Esplorazione, combattimento e narrazione" },
