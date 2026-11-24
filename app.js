@@ -11,7 +11,7 @@ app.get("/", (req, res) => {                                            // defin
 });
 
 
-app.use(express.json());
+app.use(express.json());                                            //abilita il parsing di JSON per le richieste in entrata           
 app.use("/games", gamesRouter);                                        // utilizzo del router per gestire le richieste alla route /games
 
 

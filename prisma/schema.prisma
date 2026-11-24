@@ -31,3 +31,4 @@ model Category {
   createdAt   DateTime @default(now())                                                    // campo createdAt, tipo DateTime, con valore di default
   updatedAt   DateTime @updatedAt                                                     // campo updatedAt, tipo DateTime, con aggiornamento automatico
 }
+
