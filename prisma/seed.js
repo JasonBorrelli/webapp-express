@@ -25,7 +25,7 @@ const games = [
 
 async function main() {
   await prisma.game.deleteMany();
-  await prisma.category.deleteMany();
+  await prisma.category.deleteMany(); 
 
   for (const category of categories) {
     await prisma.category.create({ data: category });
