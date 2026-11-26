@@ -8,7 +8,7 @@ const sendError = (res, status, message) =>
 
   const isStringValid = value => typeof value === 'string' && value.trim() !== '';
 
-export async function index() { 
+export async function index(req, res) { 
   const limit = req.query.limit;
   const categoryId = req.query.categoryId;              // const  
 
@@ -27,9 +27,7 @@ export async function index() {
 
   res.json(games);}
 
-export async function show() { 
- const
- }
+export async function show() { }
 
 export async function store() { }
 
