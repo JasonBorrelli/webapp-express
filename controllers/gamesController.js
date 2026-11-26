@@ -42,7 +42,7 @@ export async function show(req, res) {   const id = Number(req.params.id);
   });
 
   if (!game) {
-    return sendError(404).json({ error: "Gioco non trovato" });
+    return sendError(res, 404, "Gioco non trovato" );
   }
 
   res.json(game);}
@@ -66,9 +66,12 @@ export async function store(req, res) {
 
 export async function update(req, res) {
   const id = Number(req.params.id);
+  if (!Number.isInteger(id)) return sendError(res, 400, 'Invalid game id'); 
+
   const { name, description, price, categoryId } = req.body;
 
   if (categoryId !== undefined) {
+  
     const category = await prisma.category.findUnique({
       where: {
         id: categoryId,
