@@ -1,28 +1,22 @@
 import express from "express";
 import prisma from "../libs/prismaClient.js";
+import { index } from "../controllers/gamesController.js";
 
 const router = express.Router();
 
+//Utilities
+
+const sendError = (res, status, message) =>
+  res.status(status).json({
+    error: message, 
+    status,
+  })
+
+  const isStringValid = value => typeof value === 'string' && value.trim() !== '';
+
+
 // INDEX - lista dei giochi (Read)
-router.get("/", async (req, res) => {
-  const limit = req.query.limit;
-  const categoryId = req.query.categoryId;
-
-  // SELECT * from game where categoryId LIMIT
-  const games = await prisma.game.findMany({
-    select: {
-      id: true,
-      name: true,
-      price: true,
-      category: true,
-    },
-    where: categoryId ? { categoryId: Number(categoryId) } : undefined,
-    orderBy: { id: "asc" },
-    take: limit ? Number(limit) : undefined,
-  });
-
-  res.json(games);
-});
+router.get("/", index);
 
 // SHOW - dettaglio di un gioco (Read)
 router.get("/:id", async (req, res) => {
@@ -35,7 +29,7 @@ router.get("/:id", async (req, res) => {
   });
 
   if (!game) {
-    return res.status(404).json({ error: "Gioco non trovato" });
+    return sendError(404).json({ error: "Gioco non trovato" });
   }
 
   res.json(game);
