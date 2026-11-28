@@ -9,7 +9,7 @@ const port = process.env.APP_PORT || 4000;                              // defin
 
 app.use(
   cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:5173'
   })
 )
 
